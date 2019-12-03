@@ -1,0 +1,26 @@
+{
+  "name": "insomnia-plugin-bcrypt",
+  "version": "1.0.0",
+  "author": "Michael Ruoss <michael.ruoss@ufirstgroup.com>",
+  "description": "Insomnia plugin for encrypting passwords using bcrypt",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ufirstgroup/insomnia-plugin-bcrypt.git"
+  },
+  "keywords": [
+    "insomnia",
+    "insomnia-plugin",
+    "bcrypt",
+    "password",
+    "encryption"
+  ],
+  "insomnia": {
+    "name": "bcrypt",
+    "description": "Encrypt passwords using bcrypt"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
+  }
+}

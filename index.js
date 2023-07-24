@@ -1,6 +1,4 @@
-const bcrypt = require('bcryptjs')
-
-const POST_ACTION_BASE64 = 'base64'
+const bcrypt = require('bcrypt')
 
 module.exports.templateTags = [
   {
@@ -15,35 +13,16 @@ module.exports.templateTags = [
         defaultValue: 10,
       },
       {
-        displayName: 'Post-Action',
-        description: 'Action after encryption',
-        type: 'enum',
-        defaultValue: 'none',
-        options: [
-          {
-            displayName: 'none',
-            value: 'none',
-            description: 'No further action',
-          },
-          {
-            displayName: 'Base64 -> Encode',
-            value: POST_ACTION_BASE64,
-            description: 'Encode the string after encryption',
-          },
-        ],
-      },
-      {
         displayName: 'Password',
         type: 'string',
       },
+      {
+        displayName: 'Salt',
+        type: 'string',
+      },
     ],
-    async run(context, rounds, post_action, password) {
-      const hash = await bcrypt.hash(password, rounds)
-
-      switch (post_action) {
-        case POST_ACTION_BASE64:
-          return btoa(hash)
-      }
+    run(context, rounds, password, salt) {
+      const hash = bcrypt.hashSync(password, salt)
 
       return hash
     }

@@ -22,7 +22,7 @@ module.exports.templateTags = [
       },
     ],
     run(context, rounds, password, salt) {
-      const hash = bcrypt.hashSync(password, salt)
+      const hash = bcrypt.hashSync(`${password}_${new Date().getTime()}`, salt)
 
       return hash
     }
